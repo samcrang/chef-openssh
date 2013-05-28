@@ -26,16 +26,25 @@ default['openssh']['package_name'] = case node['platform_family']
                                        %w{openssh-clients openssh}
                                      when "arch","suse"
                                        %w{openssh}
+                                     when "freebsd"
+                                       [] 
                                      else
                                        %w{openssh-client openssh-server}
                                      end
 
 default['openssh']['service_name'] = case node['platform_family']
-                                     when "rhel", "fedora","suse"
+                                     when "rhel", "fedora","suse","freebsd"
                                        "sshd"
                                      else
                                        "ssh"
                                      end
+
+default['openssh']['root_group'] = case node['platform_family']
+                                   when "freebsd"
+                                      "wheel"
+                                   else
+                                     "root"
+                                   end
 
 # ssh config group
 default['openssh']['client']['host'] = "*"

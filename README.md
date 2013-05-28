@@ -12,6 +12,7 @@ Requirements
 * RHEL/CentOS/Scientific
 * Fedora
 * ArchLinux
+* FreeBSD (in progress)
 
 Recipes
 =======
